@@ -23,7 +23,7 @@ My pipeline consisted of the next steps:
 1. Input image is converted to grayscale.
     + This first step is essential since we narrow down the color selection to 255 and finding the white lanes is easier. 
 2. Two color masks are computed and combined, for white and yellow color.
-    + The mask for the grayscale image is computer, using the gray tones ranging from 200 to 255.
+    + The mask for the grayscale image is computed, using the gray tones ranging from 200 to 255.
     + The yellow line though is neither white nor black. We convert the input image to hsv and use a google search to 
       reveal ranges of hsv-converted yellow color. It turns out that [h, s, v] has to be between [20, 100, 100] and 
       [30, 255, 255]. Using this range we compute the yellow mask.
@@ -43,7 +43,7 @@ My pipeline consisted of the next steps:
      corner cases (divisions by zero) and crashes. They also have nothing to offer as means of classifying left or right
      lines.
    + The lines are classified to belong to the left or right lines (for positive slopes: left lines). The image is 
-     also split vertically in two halves and this information is also used to improver the classification of the lines.
+     also split vertically in two halves and this information is also used to improve the classification of the lines.
    + [x0, y0] belong to the "current" averaged line. We solve y0=slope*x0+b regarding b, and compute the b value.
    + For the region of interest, we definitely know the upper and lower y values, so simply we do x=(y-b)/slope
      to computer upper and lower x.
